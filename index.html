@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Christening Invitation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfaf7;
+      color: #2e3a59;
+      line-height: 1.6;
+      background-image: url('background.png');
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section {
+      background: white;
+      padding: 50px 30px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      border-radius: 150px 150px 0 0; /* Rounded top only */
+      padding-top: 80px; /* to create space for the arch */
+      margin-bottom: 40px;
+      display: none;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .ribbon {
+      width: 310px;
+      margin: 0 auto 0px;
+      position: relative;
+      bottom: 80px;
+
+    }
+
+    h1, h2, h3 {
+      font-family: 'Georgia', serif;
+    }
+
+    .invitation-title {
+      font-size: 1.6rem;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .highlight-name {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 15px;
+      color: #c97f76;
+    }
+
+    .btn-view {
+      display: inline-block;
+      margin-top: 25px;
+      background-color: #f9cfcf;
+      color: #2e3a59;
+      padding: 10px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-view:hover {
+      background-color: #f7bebe;
+    }
+
+    .date-info {
+      margin-top: 25px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .location {
+      font-size: 1rem;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    .godparents {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .godparents ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1rem;
+      color: #3c3c3c;
+    }
+
+    .godparents h3 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: #b2786f;
+    }
+
+    .blessing {
+      font-size: 0.95rem;
+      margin-top: 25px;
+      color: #444;
+      line-height: 1.5;
+    }
+    .blessing-container {
+    margin-top: 40px;
+    text-align: center;
+    }
+
+    .blessing-photo {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .blessing-text {
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2e3a59;
+    }
+
+    .cross-icon {
+    width: 40px;
+    height: 55px;
+    vertical-align: middle;
+    margin-right: 8px;
+    }
+
+
+    @media (max-width: 500px) {
+      .godparents {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .godparents ul {
+        margin-bottom: 20px;
+      }
+
+      .section {
+        padding: 35px 20px;
+      }
+
+      .highlight-name {
+        font-size: 1.7rem;
+      }
+
+      .btn-view {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOutUp {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation-name: fadeInUp;
+    }
+
+    .fade-out-up {
+      animation-name: fadeOutUp;
+    }
+
+    .fade-in-down {
+      animation-name: fadeInDown;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Section 1 -->
+    <div class="section active fade-in-down" id="section1">
+      <img src="ribbon.png" alt="Ribbon" class="ribbon" />
+      <h2 class="invitation-title">You're Invited to a Special Celebration!</h2>
+      <p style="margin-top: 10px;">With hearts full of joy, we invite you to be present at the Christening of</p>
+      <div class="highlight-name">Iesous Ishrael G. Daiz</div>
+      <button class="btn-view" id="viewBtn">View Invitation</button>
+    </div>
+
+    <!-- Combined Section 2+3 -->
+    <div class="section" id="section2">
+      <img src="ribbon.png" alt="Ribbon" class="ribbon" />
+      <h2>Join us for the<br><span style="font-size: 2.2rem; font-weight: bold;">Christening</span></h2>
+      <p style="margin-top: 10px;">of our daughter</p>
+      <div class="highlight-name">Iesous Ishrael G. Daiz</div>
+      <div class="date-info">
+        Wednesday, May 14 at 9:00 AM
+      </div>
+      <div class="location">
+        San Isidro Labrador Chapel Awitan<br>
+        Daet, Camarines Norte
+      </div>
+      <h2 style="margin-top: 40px;">Godparents</h2>
+      <div class="godparents">
+        <div>
+          <div>
+            <h3>Ninong</h3>
+            <ul>
+                <li>ninong Rommel Tulagan</li>
+                <li>ninong Rommel Abogado</li>
+                <li>ninong Raymark Efa</li>
+                <li>ninong John Rouven Badaguas</li>
+                <li>ninong Vener Factor</li>
+                <li>ninong Ace Badaguas</li>
+                <li>ninong Buboi Badaguas</li>
+            </ul>
+            </div> <br>
+            <div>
+            <h3>Ninang</h3>
+            <ul>
+                <li>ninang Wilma Dela Gracia</li>
+                <li>ninang Marineth Abordo</li>
+                <li>ninang Jessica Orubia</li>
+                <li>ninang Reedimay Arquillo</li>
+                <li>ninang Mechelle Taay</li>
+                <li>ninang Floridel Saspa Cabarle</li>
+                <li>ninang Margie Gaco</li>
+                <li>ninang Anabelle</li>
+                <li>ninang Rea Joy De Jesus</li>
+                <li>ninang Egelyn Quiñones</li>
+                <li>ninang Lovely Joy Magana</li>
+            </ul>
+            </div>
+        </div>
+      </div>
+      <div class="blessing">
+        We would be honored if you would accept the role of Godparent to our precious child.
+        Your guidance, love, and spiritual support will be treasures we cherish for a lifetime.
+      </div>
+      <!-- Blessing Section -->
+        <div class="blessing-container">
+        <div style="width: 100%; display: flex; justify-content: center; align-items: center;">
+            <img src="cross.png" alt="Cross" class="cross-icon" />
+        </div>
+        <img src="ugingpic.png" alt="Blessed Baby" class="blessing-photo" />
+        <div class="blessing-text">
+            GOD BLESS IESOUS ISHRAEL
+        </div>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    const viewBtn = document.getElementById("viewBtn");
+    const section1 = document.getElementById("section1");
+    const section2 = document.getElementById("section2");
+
+    viewBtn.addEventListener("click", () => {
+      section1.classList.remove("fade-in-down");
+      section1.classList.add("fade-out-up");
+      setTimeout(() => {
+        section1.style.display = "none";
+        section2.classList.add("active", "fade-in-up");
+      }, 800);
+    });
+  </script>
+</body>
+</html>
